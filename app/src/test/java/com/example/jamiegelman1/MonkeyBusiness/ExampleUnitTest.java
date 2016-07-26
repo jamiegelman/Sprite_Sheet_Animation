@@ -1,4 +1,4 @@
-package com.example.jamiegelman1.spritesheetanimation;
+package com.example.jamiegelman1.MonkeyBusiness;
 
 import org.junit.Test;
 

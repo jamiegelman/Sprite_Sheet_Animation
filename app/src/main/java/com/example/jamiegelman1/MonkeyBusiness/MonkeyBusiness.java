@@ -1,4 +1,5 @@
-package com.example.jamiegelman1.spritesheetanimation;
+package com.example.jamiegelman1.MonkeyBusiness;
+
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,7 +16,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class SpriteSheetAnimation extends Activity {
+public class MonkeyBusiness extends Activity {
 
     // Our object that will hold the view and
     // the sprite sheet animation logic
@@ -56,10 +57,10 @@ public class SpriteSheetAnimation extends Activity {
         Canvas canvas;
         Paint paint;
 
-        // This variable tracks the game frame rate
+        ////////// This variable tracks the game frame rate
         long fps;
 
-        // This is used to help calculate the fps
+        ///////// This is used to help calculate the fps
         private long timeThisFrame;
 
         // Declare an object of type Bitmap
@@ -68,18 +69,18 @@ public class SpriteSheetAnimation extends Activity {
         // Bob starts off not moving
         boolean isMoving = false;
 
-        // He can walk at 150 pixels per second
-        float walkSpeedPerSecond = 250;
+        // He can walk at 250 pixels per second*****************************************
+        float walkSpeedPerSecond = 0;
 
-        // He starts 10 pixels from the left
-        float bobXPosition = 10;
+        // He starts 10 pixels from the left ****
+        float bobXPosition = 20;
 
         // New for the sprite sheet animation
 
-        // These next two values can be anything you like
-        // As long as the ratio doesn't distort the sprite too much
-        private int frameWidth = 100;
-        private int frameHeight = 50;
+        // These next two values can be anything you like*********
+        // As long as the ratio doesn't distort the sprite too much*********
+        private int frameWidth = 300;
+        private int frameHeight = 300;
 
         // How many frames are there on the sprite sheet?
         private int frameCount = 5;
@@ -104,7 +105,7 @@ public class SpriteSheetAnimation extends Activity {
         // A rect that defines an area of the screen
         // on which to draw
         RectF whereToDraw = new RectF(
-                bobXPosition,                0,
+                bobXPosition, 0,
                 bobXPosition + frameWidth,
                 frameHeight);
 
@@ -146,7 +147,7 @@ public class SpriteSheetAnimation extends Activity {
                 // Update the frame
                 update();
 
-                // Draw the frame
+                // Draw the frame`
                 draw();
 
                 // Calculate the fps this frame
@@ -168,17 +169,17 @@ public class SpriteSheetAnimation extends Activity {
 
             // If bob is moving (the player is touching the screen)
             // then move him to the right based on his target speed and the current fps.
-            if(isMoving){
+            if (isMoving) {
                 bobXPosition = bobXPosition + (walkSpeedPerSecond / fps);
             }
 
         }
 
-        public void getCurrentFrame(){
+        public void getCurrentFrame() {
 
-            long time  = System.currentTimeMillis();
-            if(isMoving) {// Only animate if bob is moving
-                if ( time > lastFrameChangeTime + frameLengthInMilliseconds) {
+            long time = System.currentTimeMillis();
+            if (isMoving) {// Only animate if bob is moving
+                if (time > lastFrameChangeTime + frameLengthInMilliseconds) {
                     lastFrameChangeTime = time;
                     currentFrame++;
                     if (currentFrame >= frameCount) {
@@ -202,11 +203,12 @@ public class SpriteSheetAnimation extends Activity {
                 // Lock the canvas ready to draw
                 canvas = ourHolder.lockCanvas();
 
-                // Draw the background color
-                canvas.drawColor(Color.argb(255,  26, 128, 182));
+                // Draw the background color***************************************
+                canvas.drawColor(Color.argb(255, 26, 128, 182));
+
 
                 // Choose the brush color for drawing
-                paint.setColor(Color.argb(255,  249, 129, 0));
+                paint.setColor(Color.argb(255, 249, 129, 0));
 
                 // Make the text a bit bigger
                 paint.setTextSize(45);
@@ -217,9 +219,9 @@ public class SpriteSheetAnimation extends Activity {
                 // Draw bob at bobXPosition, 200 pixels
                 //canvas.drawBitmap(bitmapBob, bobXPosition, 200, paint);
 
-                whereToDraw.set((int)bobXPosition,
+                whereToDraw.set((int) bobXPosition,
                         0,
-                        (int)bobXPosition + frameWidth,
+                        (int) bobXPosition + frameWidth,
                         frameHeight);
 
                 getCurrentFrame();
