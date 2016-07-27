@@ -1,4 +1,4 @@
-package com.example.kasun.monkeybusiness;
+package com.example.jamiegelman1.MonkeyBusiness;
 
 
 import android.content.res.Resources;
