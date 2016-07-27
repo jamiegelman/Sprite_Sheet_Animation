@@ -15,21 +15,34 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+// import FrameLayout wherever it is
 
 public class MonkeyBusiness extends Activity {
 
     // Our object that will hold the view and
     // the sprite sheet animation logic
     GameView gameView;
-
+    GamePanel gp;
+    FrameLayout game;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Initialize gameView and set it as the view
+        // Initialize monkey
         gameView = new GameView(this);
-        setContentView(gameView);
-
+        // Initialize trees
+        GamePanel gp = new GamePanel(this);
+        // Alter the z order
+        gameView.setZOrderOnTop(true);
+        gp.setZOrderOnTop(false);
+        gameView.setZOrderMediaOverlay(true);
+        // Add together
+        FrameLayout game = new FrameLayout(this);
+        game.addView(gameView);
+        game.addView(gp);
+        // Set it to go
+        setContentView(game);
     }
 
     // Here is our implementation of GameView
